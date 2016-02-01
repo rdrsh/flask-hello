@@ -1,10 +1,10 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 app = Flask(__name__)
 
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    return 'Hello World! (%s)<br><a href="/add/2/3/">2+3</a>' % request.method
+    return render_template('index.html', name='World', ext_var=request.method)
 
 
 @app.route('/add/<int:x>/<int:y>/')
