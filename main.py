@@ -1,16 +1,14 @@
 import pprint
-from flask import Flask, request, render_template, Markup
+from flask import Flask, request, render_template, Markup, flash, redirect
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask_debugtoolbar import DebugToolbarExtension
-
-
-#######################################################################################################################
 from forms import LoginForm, RegistrationForm
 
+#######################################################################################################################
 app = Flask(__name__)
 app.config.from_object('config.DevelopConfig')
 db = SQLAlchemy(app)
-# toolbar = DebugToolbarExtension(app)
+toolbar = DebugToolbarExtension(app)
 
 
 #######################################################################################################################
@@ -21,18 +19,23 @@ def index():
 
 @app.route('/add/<int:x>/<int:y>/')
 def add(x, y):
-    return '%d+%d=%d' % (x, y, x+y)
+    return '%d+%d=%d' % (x, y, x + y)
 
 
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
+    if form.validate_on_submit():
+        flash('Hello %s' % form.email.data)
+        return redirect('/')
     return render_template('login.html', form=form)
 
 
 @app.route('/registration/', methods=['GET', 'POST'])
 def registration():
     form = RegistrationForm()
+    if form.validate_on_submit():
+        flash('Registration ok')
     return render_template('registration.html', form=form)
 
 
@@ -46,14 +49,15 @@ def filter_pp(x):
 
 @app.context_processor
 def inject_dict():
-    d = dict((x, x**2) for x in range(10))
+    d = dict((x, x ** 2) for x in range(10))
     return dict(d=d)
 
 
 @app.context_processor
 def inject_fn():
     def f(n):
-        return 'xyx '*n
+        return 'xyx ' * n
+
     return dict(dub_str=f)
 
 

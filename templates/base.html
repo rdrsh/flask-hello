@@ -7,6 +7,15 @@
 </head>
 
 <body>
+{% with msgs = get_flashed_messages() %}
+    {% if msgs %}
+        <div id="flashes">
+            {% for message in msgs %}
+                <div>{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
 <div id="container">
     <div id="sidebar">
         {% block sidebar %}

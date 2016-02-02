@@ -1,6 +1,14 @@
+#flashes {
+    font-size: 30px;
+    color: #0a001f;
+    text-align: right;
+    padding: 10px 20px;
+}
+
 #container {
     height: auto;
     overflow: hidden;
+    padding: 10px 20px;
 }
 
 #sidebar {
@@ -15,3 +23,6 @@
     /*background: #e8f6fe;*/
 }
 
+.err {
+    color: darkred;
+}

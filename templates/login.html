@@ -9,11 +9,17 @@
         <p>
             Логин:<br>
             {{ form.email(size=80) }}<br>
+            {% for error in form.errors.email %}
+                <span class="err">[{{ error }}] </span>
+            {% endfor %}
         </p>
 
         <p>
             Пароль:<br>
             {{ form.password(size=80) }}<br>
+            {% for error in form.errors.password %}
+                <span class="err">[{{ error }}] </span>
+            {% endfor %}
         </p>
 
         <p><input type="submit" value="Login"></p>
