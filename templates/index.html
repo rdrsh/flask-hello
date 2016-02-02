@@ -6,4 +6,13 @@
   <h1>Hello World!</h1>
 {% endif %}
 {{ ext_var }}<br>
-<a href="/add/2/3/">/add/2/3/</a>
+<a href="/add/2/3/">/add/2/3/</a><br>
+
+{{ d | pp }}<br>
+{{ dub_str(5) }}<br>
+
+{{ config | pp }}<br>
+{{ request | pp }}<br>
+{{ g | pp }}<br>
+{{ url_for }}<br>
+{{ get_flashed_messages | pp }}<br>
