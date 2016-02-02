@@ -1,3 +1,5 @@
+#coding: utf8
+
 from flask_wtf import Form
 from wtforms import StringField, PasswordField, TextAreaField, SelectField
 from wtforms.validators import Email, DataRequired, EqualTo

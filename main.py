@@ -1,12 +1,16 @@
 import pprint
 from flask import Flask, request, render_template, Markup
 from flask.ext.sqlalchemy import SQLAlchemy
+from flask_debugtoolbar import DebugToolbarExtension
 
 
 #######################################################################################################################
+from forms import LoginForm, RegistrationForm
+
 app = Flask(__name__)
 app.config.from_object('config.DevelopConfig')
 db = SQLAlchemy(app)
+# toolbar = DebugToolbarExtension(app)
 
 
 #######################################################################################################################
@@ -18,6 +22,18 @@ def index():
 @app.route('/add/<int:x>/<int:y>/')
 def add(x, y):
     return '%d+%d=%d' % (x, y, x+y)
+
+
+@app.route('/login/', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    return render_template('login.html', form=form)
+
+
+@app.route('/registration/', methods=['GET', 'POST'])
+def registration():
+    form = RegistrationForm()
+    return render_template('registration.html', form=form)
 
 
 #######################################################################################################################

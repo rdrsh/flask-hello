@@ -1,0 +1,17 @@
+#container {
+    height: auto;
+    overflow: hidden;
+}
+
+#sidebar {
+    width: 200px;
+    float: left;
+    /*background: #aafed6;*/
+}
+
+#content {
+    width: auto;
+    overflow: hidden;
+    /*background: #e8f6fe;*/
+}
+

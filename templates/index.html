@@ -1,18 +1,21 @@
-<!doctype html>
-<title>Hello from Flask</title>
-{% if name %}
-  <h1>Hello {{ name }}!</h1>
-{% else %}
-  <h1>Hello World!</h1>
-{% endif %}
-{{ ext_var }}<br>
-<a href="/add/2/3/">/add/2/3/</a><br>
+{% extends 'base.html' %}
 
-{{ d | pp }}<br>
-{{ dub_str(5) }}<br>
+{% block title %}Hello from Flask{% endblock %}
 
-{{ config | pp }}<br>
-{{ request | pp }}<br>
-{{ g | pp }}<br>
-{{ url_for }}<br>
-{{ get_flashed_messages | pp }}<br>
+{% block content %}
+    {% if name %}
+      <h1>Hello {{ name }}!</h1>
+    {% else %}
+      <h1>Hello World!</h1>
+    {% endif %}
+    {{ ext_var }}<br>
+
+    {{ d | pp }}<br>
+    {{ dub_str(5) }}<br>
+
+    {{ config | pp }}<br>
+    {{ request | pp }}<br>
+    {{ g | pp }}<br>
+    {{ url_for }}<br>
+    {{ get_flashed_messages | pp }}<br>
+{% endblock %}
